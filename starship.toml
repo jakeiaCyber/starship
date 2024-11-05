@@ -1,86 +1,205 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Sets user-defined palette
+palette = "everforest_dark"
+
+add_newline = false
+
 format = """
 $os\
+$username\
+$hostname\
 $directory\
 $git_branch\
 $git_state\
 $git_status\
+$git_metrics\
+$fill\
+$all\
+$cmd_duration $jobs $time\
+$line_break\
 $character"""
 
-right_format = """
-$git_branch\
-"""
+[directory]
+read_only = " "
+truncation_length = 4
+truncate_to_repo = false
 
-add_newline = false
-palette = "everforest"
+# [fill]
+# symbol = " "
+
+[git_branch]
+symbol = " "
+format = "[$symbol$branch(:$remote_branch)]($style) "
+
+[jobs]
+symbol = ""
+style = "bold red"
+number_threshold = 1
+format = "[$symbol]($style)"
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+
+[git_metrics]
+disabled = false
+
+[cmd_duration]
+format = "[$duration]($style)"
+
+[rust]
+symbol = " "
+format = "[$symbol$version]($style) "
+
+[aws]
+symbol = "  "
+
+[buf]
+symbol = " "
+
+[c]
+symbol = " "
+
+[conda]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[docker_context]
+symbol = " "
+format = "[$symbol$context]($style) "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[fossil_branch]
+symbol = " "
+
+[golang]
+symbol = " "
+
+[guix_shell]
+symbol = " "
+
+[haskell]
+symbol = " "
+
+[haxe]
+symbol = "⌘ "
+
+[hg_branch]
+symbol = " "
+
+[hostname]
+ssh_symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[lua]
+symbol = " "
+format = "[$symbol($version )]($style) "
+
+[memory_usage]
+symbol = "󰍛 "
+
+[meson]
+symbol = "󰔷 "
+
+[nim]
+symbol = "󰆥 "
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+symbol = " "
+format = "[$symbol$version]($style) "
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Windows = "󰍲 "
 
 [os]
 disabled = false
-format = '[$symbol ]($style)'
-style = 'fg:grey2'
+format = "[$symbol]($style) "
 
-[os.symbols]
-Windows = "󰍲"
-Ubuntu = "󰕈"
-SUSE = ""
-Raspbian = "󰐿"
-Mint = "󰣭"
-Macos = "󰀵"
-Manjaro = ""
-Linux = "󰌽"
-Gentoo = "󰣨"
-Fedora = "󰣛"
-Alpine = ""
-Amazon = ""
-Android = ""
-Arch = "󰣇"
-Artix = "󰣇"
-CentOS = ""
-Debian = "󰣚"
-Redhat = "󱄛"
-RedHatEnterprise = "󱄛"
+[package]
+symbol = "󰏗 "
+format = "[$symbol$version]($style) "
 
-[directory]
-style = "fg:orange"
-read_only_style = "fg:orange"
-truncation_length = 3
-truncation_symbol = "…/"
-format = "[ $path]($style)[$read_only]($read_only_style) "
+[pijul_channel]
+symbol = "🪺 "
 
-[git_branch]
-style = "fg:green"
-symbol = " "
-format = "[$symbol$branch(:$remote_branch)]($style) "
+[python]
+symbol = " "
 
-[character]
-success_symbol = '[](bold green)'
-error_symbol = '[](bold red)'
+[rlang]
+symbol = "󰟔 "
 
-[palettes.everforest]
-bg_dim = "#232a2e"
-bg0 = "#2d353b"
-bg1 = "#343f44"
-bg2 = "#3d484d"
-bg3 = "#475258"
-bg4 = "#4f585e"
-bg5 = "#56635f"
-bg_visual = "#543a48"
-bg_red = "#514045"
-bg_green = "#425047"
-bg_blue = "#3a515d"
-bg_yellow = "#4d4c43"
+[ruby]
+symbol = " "
 
-fg = "#d3c6aa"
-red = "#e67e80"
+[scala]
+symbol = " "
 
-orange = "#e69875"
-yellow = "#dbbc7f"
-green = "#a7c080"
-aqua = "#83c092"
-blue = "#7fbbb3"
-purple = "#d699b6"
-grey0 = "#7a8478"
-grey1 = "#859289"
-grey2 = "#9da9a0"
-statusline1 = "#a7c080"
-statusline2 = "#d3c6aa"
-statusline3 = "#e67e80"
+[spack]
+symbol = "🅢 "
+
+[palettes.everforest_dark]
+white = "#D3C6AA"
+black = "#232A2E"
+cyan = "#83C092"
+red = "#E67E80"
+yellow = "#DBBC7F"
+green = "#A7C080"
+blue = "#7FBBB3"
+orange = "#E69875"
+purple = "#D699B6"
